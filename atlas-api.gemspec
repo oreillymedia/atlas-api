@@ -21,5 +21,4 @@ Gem::Specification.new do |gem|
   gem.add_dependency "hashie", "~> 2.0.5"
   gem.add_development_dependency "rspec"
   gem.add_development_dependency "webmock"
-
 end
