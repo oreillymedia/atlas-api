@@ -8,11 +8,15 @@ module Atlas
 
       def initialize(options = {})
         @api_endpoint = options[:api_endpoint]
-        @access_token = options[:access_token]
+        @auth_token = options[:auth_token]
       end
 
       # Builds
       # ------------------------------------------------------------------------
+
+      def create_build(options)
+        post("/builds", options)
+      end
 
 
       # Build Formats
@@ -39,7 +43,7 @@ module Atlas
       end
 
       def agent
-        @agent ||= Faraday.new(@api_endpoint, { params: { access_token: @access_token }})
+        @agent ||= Faraday.new(@api_endpoint, { params: { auth_token: @auth_token }})
       end
 
       private
