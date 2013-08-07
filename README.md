@@ -1,4 +1,3 @@
-atlas-api
-=========
+# Atlas::Api
 
-Gem to interact with the O'Reilly Media Atlas API
+Gem to interact with the O'Reilly Media Atlas API 
