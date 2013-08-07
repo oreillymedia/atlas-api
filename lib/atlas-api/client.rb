@@ -30,6 +30,9 @@ module Atlas
       # Build Formats
       # ------------------------------------------------------------------------
 
+      def update_build_format(uuid, options = {})
+        put("/build_formats/#{uuid}", options)
+      end
 
       # HTTP methods
       # ------------------------------------------------------------------------

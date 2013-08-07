@@ -61,4 +61,23 @@ describe Atlas::Api::Client do
 
   end
 
+  describe "Build Format" do
+
+    before(:each) do
+      @uuid = "123bgsf"
+    end
+
+    it "#update_build_format" do
+      query = {
+        :message => "hello", 
+        :download_url => "http://www.someurl.com",
+        :status => "success"
+      }
+      stub = stub_request_with_token(:put, "/build_formats/#{@uuid}", @body.to_json, query)
+      @client.update_build_format(@uuid, query)
+      stub.should have_been_requested
+    end
+
+  end
+
 end
