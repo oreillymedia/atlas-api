@@ -26,7 +26,6 @@ module Atlas
         post("/builds", options)
       end
 
-
       # Build Formats
       # ------------------------------------------------------------------------
 
