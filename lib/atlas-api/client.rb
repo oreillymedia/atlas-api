@@ -14,6 +14,14 @@ module Atlas
       # Builds
       # ------------------------------------------------------------------------
 
+      def builds(options = {})
+        get("/builds", options)
+      end
+
+      def build(id, options = {})
+        get("/builds/#{id}", options)
+      end
+
       def create_build(options)
         post("/builds", options)
       end

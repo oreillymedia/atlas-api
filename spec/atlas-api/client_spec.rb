@@ -48,11 +48,15 @@ describe Atlas::Api::Client do
     end
 
     it "#build" do
-
+      stub = stub_request_with_token(:get, "/builds/1", @body.to_json)
+      @client.build(1)
+      stub.should have_been_requested
     end
 
     it "#builds" do
-
+      stub = stub_request_with_token(:get, "/builds", @body.to_json)
+      @client.builds
+      stub.should have_been_requested
     end
 
   end
