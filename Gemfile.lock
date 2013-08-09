@@ -2,20 +2,24 @@ PATH
   remote: .
   specs:
     atlas-api (0.0.1)
-      faraday (~> 0.8.8)
+      faraday (= 0.6.0)
       hashie (~> 2.0.5)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.3.5)
+    addressable (2.2.8)
     crack (0.4.1)
       safe_yaml (~> 0.9.0)
     diff-lcs (1.2.4)
-    faraday (0.8.8)
-      multipart-post (~> 1.2.0)
+    faraday (0.6.0)
+      addressable (~> 2.2.4)
+      multipart-post (~> 1.1.0)
+      rack (>= 1.1.0, < 2)
+      rack (>= 1.1.0, < 2)
     hashie (2.0.5)
-    multipart-post (1.2.0)
+    multipart-post (1.1.5)
+    rack (1.5.2)
     rake (10.1.0)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)

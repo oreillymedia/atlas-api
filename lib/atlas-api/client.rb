@@ -15,22 +15,22 @@ module Atlas
       # ------------------------------------------------------------------------
 
       def builds(options = {})
-        get("/builds", options)
+        get("builds", options)
       end
 
       def build(id, options = {})
-        get("/builds/#{id}", options)
+        get("builds/#{id}", options)
       end
 
       def create_build(options)
-        post("/builds", options)
+        post("builds", options)
       end
 
       # Build Formats
       # ------------------------------------------------------------------------
 
       def update_build_format(uuid, options = {})
-        put("/build_formats/#{uuid}", options)
+        put("build_formats/#{uuid}", options)
       end
 
       # HTTP methods
@@ -53,7 +53,8 @@ module Atlas
       end
 
       def agent
-        @agent ||= Faraday.new(@api_endpoint, { params: { auth_token: @auth_token }})
+        @agent ||= Faraday.new(url: @api_endpoint, params: { auth_token: @auth_token })
+        @agent
       end
 
       private
