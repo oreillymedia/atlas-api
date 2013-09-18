@@ -14,6 +14,23 @@ module Atlas
       # Builds
       # ------------------------------------------------------------------------
 
+      def build_and_poll(query)
+        post_response = create_build(query)
+        tries = 0
+
+        while(true)
+          last_response = build(post_response.id)  
+          break if last_response.status.find { |format| format.status == "queued" || format.status == "working" }.nil?
+          tries += 1
+          if tries > 20
+            raise "The build is taking too long. Exiting"
+          end
+          sleep(5)
+        end
+
+        last_response
+      end
+
       def builds(options = {})
         get("builds", options)
       end

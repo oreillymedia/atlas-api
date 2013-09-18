@@ -1,0 +1,56 @@
+#!/usr/bin/env ruby
+# encoding: UTF-8
+
+require 'rubygems'
+require 'atlas-api'
+
+ENDPOINT = "http://orm-atlas.herokuapp.com/api"
+
+raise Exception unless ARGV[0] == "build"
+
+TOKEN = ARGV[1]
+PROJECT = ARGV[2]
+FORMATS = ARGV[3]
+BRANCH = ARGV[4] || "master"
+
+puts "Building ..."
+
+# Run Script
+# --------------------------------------------------------
+
+client = Atlas::Api::Client.new(
+  auth_token: TOKEN,
+  api_endpoint: ENDPOINT
+)
+
+query = {
+  :project => PROJECT,
+  :formats => FORMATS,
+  :branch => BRANCH
+}
+
+@last_response = client.build_and_poll(query)
+
+@last_response.status.each do |format|
+  puts "#{format.format.upcase} Build Info"
+  puts "--------------------------------------------------"
+  
+  if format.message.is_a?(Hash)
+    format.message.each do |k,v|
+      puts "#{k}".capitalize
+      v.each do |me|
+        puts "- #{me}"
+      end
+    end
+  else
+    puts "#{format.message}"
+  end
+
+  puts ""
+end
+
+puts "Download Formats"
+puts "--------------------------------------------------"
+@last_response.status.each do |format|  
+  puts "#{format.format.upcase}: #{format.download_url}"
+end

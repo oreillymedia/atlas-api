@@ -46,6 +46,71 @@ describe Atlas::Api::Client do
 
   describe "Builds" do
 
+    describe "#build_and_poll" do
+      
+      it "polls the api until all builds are done" do
+        @client.stub(:sleep).and_return(true)
+
+        query = {
+          :project => "atlasservers/basic-sample",
+          :formats => "pdf,html",
+          :branch => "master",
+          :pingback_url => "http://www.someurl.com"
+        }
+
+        first = {
+          "id" => 1,
+          "status" => [
+            {
+              "format" => "pdf",
+              "status" => "queued"
+            },
+            {
+              "format" => "html",
+              "status" => "queued"
+            }
+          ]
+        }
+
+        second = {
+          "id" => 1,
+          "status" => [
+            {
+              "format" => "pdf",
+              "status" => "completed",
+              "download_url" => "pdfurl"
+            },
+            {
+              "format" => "html",
+              "status" => "queued"
+            }
+          ]
+        }
+
+        third = {
+          "id" => 1,
+          "status" => [
+            {
+              "format" => "pdf",
+              "status" => "completed",
+              "download_url" => "pdfurl"
+            },
+            {
+              "format" => "html",
+              "status" => "failed",
+              "message" => "wrong"
+            }
+          ]
+        }
+
+        stub_request_with_token(:post, "builds", first.to_json, query)
+        stub_request_with_token(:get, "builds/1", second.to_json).then.to_return(:body => third.to_json)
+        res = @client.build_and_poll(query)
+        res["status"].first["status"].should == "completed"
+        res["status"].last["status"].should == "failed"
+      end
+    end
+
     it "#create_build" do
       query = {
         :project => "atlasservers/basic-sample",
