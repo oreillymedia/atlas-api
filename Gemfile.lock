@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    atlas-api (0.0.4)
+    atlas-api (0.0.7)
       faraday (~> 0.5.3)
       hashie (~> 0.4.0)
 

@@ -6,7 +6,7 @@ require 'atlas-api'
 
 ENDPOINT = "http://orm-atlas.herokuapp.com/api"
 
-raise Exception unless ARGV[0] == "build"
+raise "Please use 'atlas build' to run this script" unless ARGV[0] == "build"
 
 TOKEN = ARGV[1]
 PROJECT = ARGV[2]
@@ -38,8 +38,12 @@ query = {
   if format.message.is_a?(Hash)
     format.message.each do |k,v|
       puts "#{k}".capitalize
-      v.each do |me|
-        puts "- #{me}"
+      if v.is_a?(Array)
+        v.each do |me|
+          puts "- #{me}"
+        end
+      else
+        puts "- #{v}"
       end
     end
   else
