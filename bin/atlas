@@ -4,7 +4,7 @@
 require 'rubygems'
 require 'atlas-api'
 
-ENDPOINT = "http://orm-atlas.herokuapp.com/api"
+ENDPOINT = "https://atlas.oreilly.com/api"
 
 raise "Please use 'atlas build' to run this script" unless ARGV[0] == "build"
 
@@ -19,8 +19,8 @@ puts "Building ..."
 # --------------------------------------------------------
 
 client = Atlas::Api::Client.new(
-  auth_token: TOKEN,
-  api_endpoint: ENDPOINT
+  :auth_token => TOKEN,
+  :api_endpoint => ENDPOINT
 )
 
 query = {
