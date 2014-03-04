@@ -43,11 +43,8 @@ module Atlas
         post("builds", options)
       end
 
-      # Build Formats
-      # ------------------------------------------------------------------------
-
-      def update_build_format(uuid, options = {})
-        put("build_formats/#{uuid}", options)
+      def update_build(id, formats = {})
+        put("builds/#{id}", :formats => formats)
       end
 
       # HTTP methods
