@@ -22,7 +22,7 @@ module Atlas
           last_response = build(post_response.id)  
           break if last_response.status.find { |format| format.status == "queued" || format.status == "working" }.nil?
           tries += 1
-          if tries > 20
+          if tries > 100
             raise "The build is taking too long. Exiting"
           end
           sleep(5)
