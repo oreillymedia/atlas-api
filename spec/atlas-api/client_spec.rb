@@ -8,7 +8,7 @@ describe Atlas::Api::Client do
 
   before(:each) do
     @token = "abcdefg"
-    @endpoint = "http://www.runemadsen.com"
+    @endpoint = "http://atlas.oreilly.com"
     @body = { message: "Success!" }
     @client = Atlas::Api::Client.new(
       auth_token: @token,
@@ -32,7 +32,7 @@ describe Atlas::Api::Client do
     end
 
     it "should combine paths from endpoint and path" do
-      @endpoint = "http://www.runemadsen.com/api"
+      @endpoint = "http://atlas.oreilly.com/api"
       client = Atlas::Api::Client.new(
         auth_token: @token,
         api_endpoint: @endpoint

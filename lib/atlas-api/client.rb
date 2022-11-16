@@ -74,7 +74,7 @@ module Atlas
       private
 
       def request(method, path, options)
-        @last_response = response = agent.send(method, URI.encode(path), options)
+        @last_response = response = agent.send(method, path, options)
         Hashie::Mash.new(JSON.parse(response.body))
       end
 
