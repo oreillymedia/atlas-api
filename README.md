@@ -21,5 +21,5 @@ $ atlas build ATLAS_TOKEN PROJECT FORMATS BRANCH
 A real world example of this would look something like this:
 
 ```bash
-$ atlas build abcdefg oreillymedia/atlas_book_skeleton pdf,epub,html master
+$ atlas build abcdefg oreillymedia/atlas_book_skeleton pdf,epub,html main
 ```

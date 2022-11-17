@@ -54,7 +54,7 @@ describe Atlas::Api::Client do
         query = {
           :project => "atlasservers/basic-sample",
           :formats => "pdf,html",
-          :branch => "master",
+          :branch => "main",
           :pingback_url => "http://www.someurl.com"
         }
 
@@ -115,7 +115,7 @@ describe Atlas::Api::Client do
       query = {
         :project => "atlasservers/basic-sample",
         :formats => "pdf,html",
-        :branch => "master",
+        :branch => "main",
         :pingback_url => "http://www.someurl.com"
       }
       stub = stub_request_with_token(:post, "builds", @body.to_json, query)
