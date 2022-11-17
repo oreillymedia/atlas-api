@@ -62,10 +62,6 @@ module Atlas
         request :put, path, options
       end
 
-      def delete(path, options = {})
-        request :delete, path, options
-      end
-
       def agent
         @agent ||= Faraday.new(url: @api_endpoint, params: { auth_token: @auth_token })
         @agent
