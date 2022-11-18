@@ -6,8 +6,8 @@ require 'atlas-api/version'
 Gem::Specification.new do |gem|
   gem.name          = "atlas-api"
   gem.version       = Atlas::Api::VERSION
-  gem.authors       = ["Rune Skjoldborg Madsen"]
-  gem.email         = ["rune@runemadsen.com"]
+  gem.authors       = ["O'Reilly Media Tools Team"]
+  gem.email         = ["toolsreq@oreilly.com"]
   gem.description   = "Gem to interact with the O'Reilly Media Atlas API"
   gem.summary       = "Gem to interact with the O'Reilly Media Atlas API"
   gem.homepage      = ""
@@ -17,7 +17,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_dependency "faraday", "~> 0.15.4"
+  gem.add_dependency "faraday", "~> 2.7.0"
   gem.add_dependency "hashie", "~> 3.6.0"
   gem.add_development_dependency "rspec"
   gem.add_development_dependency "webmock"

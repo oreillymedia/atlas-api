@@ -62,10 +62,6 @@ module Atlas
         request :put, path, options
       end
 
-      def delete(path, options = {})
-        request :delete, path, options
-      end
-
       def agent
         @agent ||= Faraday.new(url: @api_endpoint, params: { auth_token: @auth_token })
         @agent
@@ -74,7 +70,7 @@ module Atlas
       private
 
       def request(method, path, options)
-        @last_response = response = agent.send(method, URI.encode(path), options)
+        @last_response = response = agent.send(method, path, options)
         Hashie::Mash.new(JSON.parse(response.body))
       end
 

@@ -8,7 +8,7 @@ describe Atlas::Api::Client do
 
   before(:each) do
     @token = "abcdefg"
-    @endpoint = "http://www.runemadsen.com"
+    @endpoint = "http://atlas.oreilly.com"
     @body = { message: "Success!" }
     @client = Atlas::Api::Client.new(
       auth_token: @token,
@@ -32,7 +32,7 @@ describe Atlas::Api::Client do
     end
 
     it "should combine paths from endpoint and path" do
-      @endpoint = "http://www.runemadsen.com/api"
+      @endpoint = "http://atlas.oreilly.com/api"
       client = Atlas::Api::Client.new(
         auth_token: @token,
         api_endpoint: @endpoint
@@ -54,7 +54,7 @@ describe Atlas::Api::Client do
         query = {
           :project => "atlasservers/basic-sample",
           :formats => "pdf,html",
-          :branch => "master",
+          :branch => "main",
           :pingback_url => "http://www.someurl.com"
         }
 
@@ -115,7 +115,7 @@ describe Atlas::Api::Client do
       query = {
         :project => "atlasservers/basic-sample",
         :formats => "pdf,html",
-        :branch => "master",
+        :branch => "main",
         :pingback_url => "http://www.someurl.com"
       }
       stub = stub_request_with_token(:post, "builds", @body.to_json, query)
